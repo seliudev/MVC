@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,11 @@ namespace BLL.DAL
         //    return this.id;
         //}
 
-        public int Id { get; set; } // PK
+
+        //Relational database ex: there is s relation between Category and Product
+        public int Id { get; set; } // PK, this is required since we didnt use question mark so its required automatically thats why we dont have to use required here
+        [Required] //Database applications, we will use requşred for strings mostly
+        [StringLength(150)]
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
         public DateTime? ExpirationDate { get; set; }
