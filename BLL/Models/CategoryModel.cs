@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace BLL.Models
 {
     public class CategoryModel
     {
-        public CategoryModel Record { get; set; }
+        public Category Record { get; set; }
 
         public string Name => Record.Name;
 
