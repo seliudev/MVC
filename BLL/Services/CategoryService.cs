@@ -10,8 +10,19 @@ using System.Threading.Tasks;
 
 namespace BLL.Services
 {
-    public class CategoryService : Service
+    public interface ICategoryService
     {
+        public IQueryable<CategoryModel> Query();
+        //We need method definitions:
+
+        public Service Create(Category record);
+        public Service Update(Category record);
+        public Service Delete(int id);
+    }
+
+    public class CategoryService : Service, ICategoryService
+    {
+
         public CategoryService(Db db) : base(db)
         {
 
@@ -50,7 +61,7 @@ namespace BLL.Services
 
         public Service Update(Category record) 
         {
-            if (_db.Categories.Any(c => c.Id != record.Id && c.Name.ToUpper() == record.Name.ToUpper().Trim())
+            if (_db.Categories.Any(c => c.Id != record.Id && c.Name.ToUpper() == record.Name.ToUpper().Trim()))
             {
                 return Error("\"Category with the same name exists!");
             }
